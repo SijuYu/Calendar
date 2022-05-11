@@ -2,7 +2,7 @@
   <div>
     <div class="calendar-box">
       <div class="day-cell" v-for="i in offset" :key="i"></div>
-      <div class="day-cell" v-for="j in daysInMonth" :key="j">test</div>
+      <div class="day-cell" v-for="j in daysInMonth" :key="j"> {{j}} </div>
     </div>
   </div>
 </template>
