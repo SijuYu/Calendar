@@ -2,7 +2,11 @@
   <div>
     <div class="calendar-box">
       <div class="day-cell" v-for="i in offset" :key="i"></div>
-      <div class="day-cell" v-for="j in daysInMonth" :key="j"> {{j}} </div>
+      <div class="day-cell" v-for="j in daysInMonth" :key="j">
+        {{j}}
+        <button class="day-btn"> - </button>
+        <button class="day-btn"> + </button>
+       </div>
     </div>
   </div>
 </template>
@@ -33,5 +37,14 @@ export default {
   border: 1px solid gray;
   width: calc(10vw - 2px);
   height: 160px;
+}
+
+button{
+  float: right;
+  height: 20px;
+  width: 20px;
+  margin: 0;
+
+  border: 1px solid white;
 }
 </style>
