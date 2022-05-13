@@ -6,9 +6,9 @@
             <div class="day-head">
                 {{date}}
                 <button class="day-btn"> - </button>
-                <button class="day-btn" @click="addSchedule(20220500 + date,'test')"> + </button>
+                <button class="day-btn" @click="addSchedule(20220500 + date,'inputtest')"> + </button>
             </div>
-            <div v-for="s in schedule[20220500 + date]" :key="s"> {{s}}  </div>
+            <div v-for="s in this.$store.state.schedule[20220500 + date]" :key="s"> {{s}}  </div>
         </div>
     </div>
   </div>
@@ -21,14 +21,11 @@ export default {
     return {
       offset: 3, //1일이 무슨 요일인지에 따라 비워지는 day-cell을 지정해 준 것(이후 월마다의 정보에 따라 변경가능케 하기)
       daysInMonth: 31,
-      schedule: {
-          date: ['context']
-      },
     };
   },
   methods: {
-      addSchedule(date,context){
-          this.schedule[date] = {context};
+      addSchedule(newdate,newcontext){
+        this.$store.commit('ADD_SCHEDULE', {date: newdate, context: newcontext});
       }
   }
 };
