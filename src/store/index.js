@@ -11,6 +11,9 @@ export default createStore({
       }else{
         state.schedule[data.date] = [data.context]
       }
+    },
+    CLEAR_SCHEDULE(state,date){
+      state.schedule[date] = [];
     }
   },
   actions: {},
