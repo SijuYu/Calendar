@@ -8,7 +8,11 @@
                 <button class="day-btn" @click="this.$store.commit('CLEAR_SCHEDULE',20220500 + date)"> X </button>
                 <button class="day-btn" @click="addSchedule(20220500 + date,'inputtest')"> + </button>
             </div>
-            <div v-for="s in this.$store.state.schedule[20220500 + date]" :key="s"> {{s}}  </div>
+            <div v-for="(s,id) in this.$store.state.schedule[20220500 + date]" :key="id">
+              {{s}}
+              <button @click="deleteSchedule(20220500+date, id)"> x </button>
+              <button> i </button>
+            </div>
         </div>
     </div>
   </div>
@@ -21,12 +25,15 @@ export default {
     return {
       offset: 3, //1일이 무슨 요일인지에 따라 비워지는 day-cell을 지정해 준 것(이후 월마다의 정보에 따라 변경가능케 하기)
       daysInMonth: 31,
-      id: 0,
+      index: 0,
     };
   },
   methods: {
       addSchedule(newdate,newcontext){
         this.$store.commit('ADD_SCHEDULE', {date: newdate, context: newcontext});
+      },
+      deleteSchedule(deletedate, id){
+        this.$store.commit('DELETE_SCHEDULE', {date: deletedate, index: id});        
       },
   }
 };

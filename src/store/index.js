@@ -2,7 +2,7 @@ import { createStore } from "vuex";
 
 export default createStore({
   state: {
-    schedule: { 20220503: ['test1','test2','test3'] },
+    schedule: { 20220532: ['test1','test2','test3'] },
   },
   mutations: {
     ADD_SCHEDULE(state,data){
@@ -14,7 +14,10 @@ export default createStore({
     },
     CLEAR_SCHEDULE(state,date){
       state.schedule[date] = [];
-    }
+    },
+    DELETE_SCHEDULE(state,data){
+      state.schedule[data.date].splice(data.index, 1);
+    },
   },
   actions: {},
   modules: {},
