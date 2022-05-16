@@ -18,6 +18,9 @@ export default createStore({
     DELETE_SCHEDULE(state,data){
       state.schedule[data.date].splice(data.index, 1);
     },
+    UPDATE_SCHEDULE(state,data){
+      state.schedule[data.date][data.index] = data.context;
+    }
   },
   actions: {},
   modules: {},
